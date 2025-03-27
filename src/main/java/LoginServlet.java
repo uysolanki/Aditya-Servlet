@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		else
 		{
-			out.print("Invalid Credentials");
+			out.print("<font color='red'>Invalid Credentials</font>");
 			RequestDispatcher rd=request.getRequestDispatcher("/login.html");
 			rd.include(request, response);
 		}
