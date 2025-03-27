@@ -36,8 +36,17 @@ public class LoginServlet extends HttpServlet {
 		
 		if(username.endsWith("itp.com") && password.length()>=6)
 		{
-			RequestDispatcher rd=request.getRequestDispatcher("/homepage.html");
-			rd.forward(request, response);
+//			RequestDispatcher rd=request.getRequestDispatcher("/homepage.html");
+//			rd.forward(request, response);
+	
+			//route to html page
+//			out.print("<font color='green'>Login Success</font>");
+//			out.print("<a href='homepage.html'>GO TO HOMEPAGE </a>");
+			
+			//route to action
+			out.print("<font color='green'>Login Success</font>");
+			out.print("<a href='TableServlet'>SHOW TABLES</a>");
+			
 		}
 		else
 		{
