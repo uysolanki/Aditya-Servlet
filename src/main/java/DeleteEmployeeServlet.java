@@ -2,6 +2,8 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,16 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class DeleteEmployeeServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/DeleteEmployeeServlet")
+public class DeleteEmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public DeleteEmployeeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,28 +33,27 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
-		String username=request.getParameter("t1");
-		String password=request.getParameter("t2");
+		int a=Integer.parseInt(request.getParameter("eno"));
 		
-		if(username.endsWith("itp.com") && password.length()>=6)
+		try
 		{
-			RequestDispatcher rd=request.getRequestDispatcher("showemps");
-			rd.forward(request, response);
-	
-			//route to html page
-//			out.print("<font color='green'>Login Success</font>");
-//			out.print("<a href='homepage.html'>GO TO HOMEPAGE </a>");
 			
-			//route to action
-//			out.print("<font color='green'>Login Success</font>");
-//			out.print("<a href='TableServlet'>SHOW TABLES</a>");
+			Connection con=MySQLConnectionITP.getConnection();
+			String query="delete from emp where eno=?";
 			
-		}
-		else
-		{
-			out.print("<font color='red'>Invalid Credentials</font>");
-			RequestDispatcher rd=request.getRequestDispatcher("/login.html");
-			rd.include(request, response);
+			PreparedStatement ps=con.prepareStatement(query);
+			
+			ps.setInt(1, a);
+			
+			int rows=ps.executeUpdate();
+							
+			if(rows>0)
+			{
+				RequestDispatcher rd=request.getRequestDispatcher("showemps");
+				rd.forward(request, response);
+			}
+		}catch(Exception e1) {
+			System.out.println(e1.getMessage());
 		}
 	}
 

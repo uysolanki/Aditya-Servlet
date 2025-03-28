@@ -25,4 +25,37 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
+    
+    
+    <servlet>
+      <servlet-name>AddEmployee</servlet-name>
+      <servlet-class>AddEmployeeServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>AddEmployee</servlet-name>
+        <url-pattern>/addEmp</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+       <servlet-name>ShowAllEmployees</servlet-name>
+      <servlet-class>ShowAllEmployeesServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>ShowAllEmployees</servlet-name>
+        <url-pattern>/showemps</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+       <servlet-name>DeleteEmployee</servlet-name>
+      <servlet-class>DeleteEmployeeServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>DeleteEmployee</servlet-name>
+        <url-pattern>/delemp</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
