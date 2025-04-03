@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
+	<context-param>
+		<param-name>n1</param-name>
+		<param-value>100</param-value>
+	</context-param>
 
 	<welcome-file-list>
         <welcome-file>add.html</welcome-file>
@@ -78,6 +82,32 @@
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+      <servlet-name>Visit</servlet-name>
+      <servlet-class>VisitServlet</servlet-class>
+      
+      
+      <init-param>
+		<param-name>n2</param-name>
+		<param-value>200</param-value>
+	  </init-param>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Visit</servlet-name>
+        <url-pattern>/visit</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+       <servlet-name>Language</servlet-name>
+      <servlet-class>LanguageServlet2</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Language</servlet-name>
+        <url-pattern>/lang</url-pattern>
     </servlet-mapping>
     
 </web-app>
